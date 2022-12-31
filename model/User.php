@@ -10,6 +10,7 @@ class User
     private $address;
     private $postalCode;
     private $city;
+    private $role;
 
     public function __construct($data)
     {
@@ -96,5 +97,13 @@ class User
     final public function setPostalCode($pCode)
     {
         $this->postalCode=$pCode;
+    }
+    final public function getRole()
+    {
+        $this->role;
+    }
+    final public function setRole($userRole)
+    {
+        $this->role=$userRole;
     }
 }

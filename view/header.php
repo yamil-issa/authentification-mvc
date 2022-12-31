@@ -4,15 +4,15 @@
         <meta charset="utf-8">
         <title>EcoSphere - Shop</title>
         <meta name="viewport" content="width=device-width">
-        <link href="./style/general.css" rel="stylesheet" type="text/css">
-        <link href="./style/header-footer.css" rel="stylesheet" type="text/css">
-        <link href="./style/mainSection.css" rel="stylesheet" type="text/css">
+        <link href="view\style\general.css" rel="stylesheet" type="text/css">
+        <link href="view\style\header-footer.css" rel="stylesheet" type="text/css">
+        <link href="view\style\mainSection.css" rel="stylesheet" type="text/css">
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito|Glegoo" rel="stylesheet">
         <!-- Fontawesome -->
         <script src="./js/fontawesome-all.min.js"></script>
         <!-- Icon -->
-        <link href="./img/icon.png" rel="icon">
+        <link href="view\img\icon.png" rel="icon">
     </head>
     <body>
 <header>
@@ -34,7 +34,7 @@
             </div>
 
     <ul id="menu_bar">
-        <a href="./index.php?ctrl=user&action=usersList" class="no-deco"><li>Liste des utilisateurs</li></a>
+        <a href="./index.php?ctrl=user&action=userList" class="no-deco"><li>Liste des utilisateurs</li></a>
         <a href="./" class="no-deco"><li>Le mémoire</li></a>
         <a href="./" class="no-deco"><li>La soutenance</li></a>
         <a href="./" class="no-deco"><li>Le carnet de liaison</li></a>

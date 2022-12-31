@@ -18,7 +18,7 @@ class UserManager
     {  
         try {
             $req = $this->db->prepare(
-                "INSERT INTO user (lastName, firstName, email, adress, postalCode, city, password) VALUES ( ?, ?, ?, ?, ?, ?, ?)"
+                "INSERT INTO user (lastName, firstName, email, adress, postalCode, city, password, role) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)"
             );
             $req->execute(
                 array(
@@ -28,26 +28,32 @@ class UserManager
                 $user->getAddress(),
                 $user->getPostalCode(),
                 $user->getCity(),
-                $user->getPassword()
+                $user->getPassword(),
+                0
                 )
             );
         } catch(PDOException $Exception) {
             echo $Exception->getCode();
         }
     }
+    public function getUserManagerDb(){
+        return $this->db;
+    }
     public function findAll()
     {
+        $users_tab = array();
         $req = $this->db->prepare(
             'SELECT *
- FROM users'
+ FROM user'
         );
         $req->execute();
-        return $req->fetchAll();
+        $users_tab = $req->fetchAll();
+        return $users_tab;
     }
     final public function findOne($id)
     {
         $req = $this->db->prepare(
-            "SELECT * FROM users WHERE id=$id"
+            "SELECT * FROM user WHERE id=$id"
         );
         $req->execute();
         return $req->fetchAll();

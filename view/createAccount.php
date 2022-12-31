@@ -1,17 +1,3 @@
-<head>
-        <meta charset="utf-8">
-        <title>EcoSphere - Shop</title>
-        <meta name="viewport" content="width=device-width">
-        <link href="./style/general.css" rel="stylesheet" type="text/css">
-        <link href="./style/header-footer.css" rel="stylesheet" type="text/css">
-        <link href="./style/mainSection.css" rel="stylesheet" type="text/css">
-        <!-- Font -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito|Glegoo" rel="stylesheet">
-        <!-- Fontawesome -->
-        <script src="./js/fontawesome-all.min.js"></script>
-        <!-- Icon -->
-        <link href="./img/icon.png" rel="icon">
-    </head>
 <section id="main-section">
     <div class="wrapper-50 margin-auto center">
     <h2>Create an account</h2>
