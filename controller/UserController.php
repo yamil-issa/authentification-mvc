@@ -57,7 +57,7 @@ class UserController
     }
 
     public function userList(){
-        $this->userManager->findAll();
+        $users_tab = $this->userManager->findAll();
         $page = 'userList';
         require('./view/default.php');
   

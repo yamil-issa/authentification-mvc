@@ -29,7 +29,7 @@ class UserManager
                 $user->getPostalCode(),
                 $user->getCity(),
                 $user->getPassword(),
-                0
+                
                 )
             );
         } catch(PDOException $Exception) {
@@ -41,14 +41,12 @@ class UserManager
     }
     public function findAll()
     {
-        $users_tab = array();
-        $req = $this->db->prepare(
-            'SELECT *
- FROM user'
-        );
-        $req->execute();
-        $users_tab = $req->fetchAll();
-        return $users_tab;
+        $users_tabs = array();
+        $req ="SELECT *  FROM user";
+        $req = $this->db->query($req);
+        
+        $users_tabs = $req->fetchAll();
+        return $users_tabs;
     }
     final public function findOne($id)
     {
