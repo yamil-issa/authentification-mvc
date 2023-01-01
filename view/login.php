@@ -25,7 +25,7 @@
             <input type="submit" class="submit-btn" value="Connect">
         </p>
     </form>
-    <p></p>
+    <?php if(isset($info)){ ?> <p><?=$info ?></p> <?php } ?>
 
     <div class="create-account">You don't have an account ? <a href='index.php?ctrl=user&action=createAccount'>Create one</a> !</div>
 </div></section>

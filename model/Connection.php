@@ -10,7 +10,7 @@ class Connection
     public function __construct()
     {
         $this->host = 'localhost';
-        $this->dbname = 'testphp';
+        $this->dbname = 'authentification';
         $this->username = 'root';
         $this->password = '';
         try {

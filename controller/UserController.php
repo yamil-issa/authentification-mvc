@@ -48,9 +48,10 @@ class UserController
         if ($result) {
             $info = "Connexion reussie";
             $_SESSION['user'] = $result[3];
+            $_SESSION['admin'] = $result[8];
             $page = 'home';
         } else {
-            $info = "Identifiants incorrects.";
+            $info = "ERROR : login or password incorrect !";
             $page = 'login';
         }
         require('./view/default.php');
@@ -58,10 +59,16 @@ class UserController
 
     public function userList(){
         $users_tab = $this->userManager->findAll();
-        $page = 'unauthorized';
+        $page = 'userList';
         require('./view/default.php');
   
    }
+
+   public function unauthorized(){
+    $page = 'unauthorized';
+    require('./view/default.php');
+
+}
 
 
   public function createAccount()
@@ -93,6 +100,8 @@ class UserController
 
      $this->userManager->create($this->user);
      $info = "l'utilsateur a été crée";
+     $page = 'login';
+     require('./view/default.php');
  }
  
 }

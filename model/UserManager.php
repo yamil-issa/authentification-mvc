@@ -29,6 +29,7 @@ class UserManager
                 $user->getPostalCode(),
                 $user->getCity(),
                 $user->getPassword(),
+                0
                 
                 )
             );
