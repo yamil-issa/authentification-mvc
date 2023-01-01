@@ -34,11 +34,11 @@ class UserController
             (isset($email) && !empty($email)) &&
             (isset($password) && !empty($password))
         ) {
-            $req = "SELECT * FROM user WHERE email = ? AND password = ?";
+            $req = "SELECT * FROM user WHERE email = ?";
 
 
             $res = $this->userManager->getUserManagerDb()->prepare($req);
-            $res->execute(array($email, $password));
+            $res->execute(array($email));
         
         } else {
             echo "erreur";
@@ -46,10 +46,15 @@ class UserController
          
         $result = $res->fetch();
         if ($result) {
-            $info = "Connexion reussie";
-            $_SESSION['user'] = $result[3];
-            $_SESSION['admin'] = $result[8];
-            $page = 'home';
+            $passwordHash = $result[2];
+            if(password_verify($password, $passwordHash)) {
+                $info = "Connexion reussie";
+                $_SESSION['user'] = $result[3];
+                $page = 'home';
+            } else {
+                $info = "ERROR : login or password incorrect !";
+                $page = 'login';
+            }
         } else {
             $info = "ERROR : login or password incorrect !";
             $page = 'login';
@@ -85,7 +90,7 @@ class UserController
      $address =  $_POST['address'];
      $postalCode = $_POST['postalCode'];
      $city = $_POST['city'];
-     $password = $_POST['password'];
+     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
      $donnees = array(
          'password'=>$password,

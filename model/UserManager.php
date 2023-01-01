@@ -7,12 +7,7 @@ class UserManager
     {
         $this->db = $db1;
     }
-    public function login(User $user)
-    {
-        $id = $user->getId();
-        $req = $this->db->prepare("SELECT * FROM users WHERE id=$id");
-        return $req->fetch();
-    }
+
 
     public function create(User $user)
     {  

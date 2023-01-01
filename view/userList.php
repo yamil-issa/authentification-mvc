@@ -3,9 +3,9 @@
             <table class="">
             <tr>
                 <th>Email</th>
-                <th>Password</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Password</th>
                 <th>Admin</th>
             </tr>
             <?php

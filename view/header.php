@@ -46,7 +46,7 @@
             </div>
 
     <ul id="menu_bar">
-        <?php $path = ""; if(!isset($_SESSION['admin']) || $_SESSION['admin'] == 0 ) {$path = "unauthorized";}else if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1 ){ $path = "userList"; } ?><a href="./index.php?ctrl=user&action=<?php echo $path; ?>" class="no-deco"><li>Liste des utilisateurs</li></a>
+        <?php $path = ""; if(!isset($_SESSION['user'])) {$path = "unauthorized";}else{ $path = "userList"; } ?><a href="./index.php?ctrl=user&action=<?php echo $path; ?>" class="no-deco"><li>Liste des utilisateurs</li></a>
         <a href="./" class="no-deco"><li>Le mémoire</li></a>
         <a href="./" class="no-deco"><li>La soutenance</li></a>
         <a href="./" class="no-deco"><li>Le carnet de liaison</li></a>
