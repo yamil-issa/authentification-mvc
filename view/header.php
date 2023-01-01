@@ -10,7 +10,7 @@
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito|Glegoo" rel="stylesheet">
         <!-- Fontawesome -->
-        <script src="./js/fontawesome-all.min.js"></script>
+        <script src="view\js\fontawesome-all.min.js"></script>
         <!-- Icon -->
         <link href="view\img\icon.png" rel="icon">
     </head>
@@ -26,10 +26,22 @@
 
     <div id="account_bar">
                 <div class="connection center">
-            <a href="./index.php?ctrl=user&action=login" class="no-deco" title="Login or create account">
+                <?php if (isset($_SESSION['user'])) { ?> <div class="text">Bonjour <?php echo $_SESSION['user'] ?></div>  <?php } ?>
+
+                <?php if (isset($_SESSION['user'])) { ?> 
+                    <a href="./index.php?ctrl=user&action=logout" class="no-deco" title="Login or create account">
                 <i class="fas fa-user"></i>
-                <div class="text">Login</div>
+                <div class="text">Logout</div>
             </a>
+
+                <?php } else { ?>
+                    <a href="./index.php?ctrl=user&action=login" class="no-deco" title="Login or create account">
+                    <i class="fas fa-user"></i>
+                    <div class="text">Login</div>
+                </a>
+
+                <?php } ?>
+           
         </div>
             </div>
 

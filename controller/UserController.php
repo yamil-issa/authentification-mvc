@@ -17,13 +17,18 @@ class UserController
         $page = 'login';
         require('./view/default.php');
     }
+    public function logout()
+    {
+        session_start(); 
+        session_destroy();
+        header("location: index.php"); 
+        exit();
+    }
 
     public function doLogin()
     {
-       
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $result = false;
 
         if (
             (isset($email) && !empty($email)) &&
@@ -31,23 +36,18 @@ class UserController
         ) {
             $req = "SELECT * FROM user WHERE email = ? AND password = ?";
 
+
             $res = $this->userManager->getUserManagerDb()->prepare($req);
             $res->execute(array($email, $password));
-
-            if ($res->rowCount() > 0) {
-                $result = true;
-                header('Location: index.php');
-            }else {
-                echo"identifiants incorrects";
-            }
+        
         } else {
             echo "erreur";
         }
-
-
+         
+        $result = $res->fetch();
         if ($result) {
             $info = "Connexion reussie";
-            $_SESSION['user'] = $result;
+            $_SESSION['user'] = $result[3];
             $page = 'home';
         } else {
             $info = "Identifiants incorrects.";
@@ -58,7 +58,7 @@ class UserController
 
     public function userList(){
         $users_tab = $this->userManager->findAll();
-        $page = 'userList';
+        $page = 'unauthorized';
         require('./view/default.php');
   
    }
@@ -92,7 +92,7 @@ class UserController
      $this->user = new User($donnees);
 
      $this->userManager->create($this->user);
-     echo "l'utilsateur a été crée";
+     $info = "l'utilsateur a été crée";
  }
  
 }
