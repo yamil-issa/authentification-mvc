@@ -4,6 +4,7 @@ class UserController
 {
     private $userManager;
     private $user;
+    private $db;
 
     public function __construct($db1)
     {
@@ -19,9 +20,9 @@ class UserController
     }
     public function logout()
     {
-        session_start(); 
+        session_start();
         session_destroy();
-        header("location: index.php"); 
+        header("location: index.php");
         exit();
     }
 
@@ -39,15 +40,14 @@ class UserController
 
             $res = $this->userManager->getUserManagerDb()->prepare($req);
             $res->execute(array($email));
-        
         } else {
             echo "erreur";
         }
-         
+
         $result = $res->fetch();
         if ($result) {
             $passwordHash = $result[2];
-            if(password_verify($password, $passwordHash)) {
+            if (password_verify($password, $passwordHash)) {
                 $info = "Connexion reussie";
                 $_SESSION['user'] = $result[3];
                 $page = 'home';
@@ -62,18 +62,18 @@ class UserController
         require('./view/default.php');
     }
 
-    public function userList(){
+    public function userList()
+    {
         $users_tab = $this->userManager->findAll();
         $page = 'userList';
         require('./view/default.php');
-  
+    }
+
+   public function unauthorized()
+   {
+       $page = 'unauthorized';
+       require('./view/default.php');
    }
-
-   public function unauthorized(){
-    $page = 'unauthorized';
-    require('./view/default.php');
-
-}
 
 
   public function createAccount()
@@ -108,5 +108,4 @@ class UserController
      $page = 'login';
      require('./view/default.php');
  }
- 
 }
